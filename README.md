@@ -83,7 +83,7 @@ npm run dev
 
 When both the **Backend (Port 5000)** and **Frontend (Port 5173)** are running:
 
-1. Open your web browser (Chrome/Firefox/Edge).
+1. Open your web browser (Chrome/Brave).
 2. Type in the URL bar: `http://localhost:5173`
 3. You will see the **SECURELABS Landing Page**.
 4. Click on "Get Started" to **Login / Signup** and access your Dashboard.
