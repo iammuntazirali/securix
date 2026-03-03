@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem('token'));
     const [loading, setLoading] = useState(true);
 
-    // On mount, check if token exists and fetch user
+    // this allows the app to persist login state across refreshes
     useEffect(() => {
         const savedToken = localStorage.getItem('token');
         const savedUser = localStorage.getItem('user');
@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
     }, []);
 
-    // ========== SIGNUP ==========
+    // signup 
     const signup = async (name, email, password, role) => {
         const res = await fetch(`${API_URL}/signup`, {
             method: 'POST',
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
         return data;
     };
 
-    // ========== LOGIN ==========
+    // login
     const login = async (email, password) => {
         const res = await fetch(`${API_URL}/login`, {
             method: 'POST',
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
         return data;
     };
 
-    // ========== LOGOUT ==========
+    // logout
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
