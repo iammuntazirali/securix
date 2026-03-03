@@ -1,37 +1,91 @@
-# 🛡️ SECURELAB: Security Assessment Management System
+# SECURELABS How to Run the Project
 
-**SECURELAB** is a centralized university laboratory management platform designed to streamline and monitor security audit workflows in a controlled academic environment. The system bridges the gap between Faculty, Teaching Assistants (TAs), and Students, allowing for structured security assessments and real-time performance tracking.
-
----
-
-## 🚀 Project Overview
-The project implements a multi-role architecture, ensuring that each user level has specific responsibilities and dedicated views:
-
-* **Student Dashboard**: A module where students perform simulated security audits (SQLi, XSS, etc.) and log their findings.
-* **TA Dashboard**: A monitoring panel for Teaching Assistants to track live group activity and assign grades based on technical proficiency.
-* **Faculty Dashboard**: A high-level oversight panel for Faculty to manage TAs, track student attack history, and review overall lab performance.
+This guide provides step-by-step instructions on how to set up and run the **SECURELABS** project from scratch on a new system.
 
 ---
 
-## ✨ Key Features
-
-### 👤 Role-Based Access Control
-* **Student Interface**: Features a "Start Attack" simulation with live hacker-style terminal logs.
-* **TA Interface**: Includes group-wise grading and the ability to review submitted vulnerabilities.
-* **Faculty Interface**: Provides a comprehensive view of TA-to-Group assignments and historical attack logs for every student group.
-
-### 🛠️ Educational Attack Vectors
-The system is designed to track and simulate several popular cybersecurity assessments:
-* **SQL Injection (SQLi)**: Evaluating database security and input sanitization.
-* **Cross-Site Scripting (XSS)**: Auditing frontend script injection vulnerabilities.
-* **Brute Force Simulation**: Analyzing authentication strength and credential security.
+## 1. Prerequisites (What needs to be installed?)
+Before running the project, ensure that the following are installed on your system:
+1. **Node.js** (v18 or higher) - Required as the JavaScript runtime for both the backend and frontend.
+2. **Nmap** - Required for network scanning (the backend relies on it).
+   - *Linux (Ubuntu):* `sudo apt install nmap`
+   - *Windows:* Download and install from the official Nmap website (ensure it is added to the Environment Variables/PATH).
+3. **MongoDB Atlas Account** (A cloud database is recommended, but you can also use a local MongoDB setup).
 
 ---
 
-## 💻 Tech Stack
-* **Frontend**: React.js + Vite (High-performance development)
-* **Styling**: Tailwind CSS v4 (Premium dark-themed UI)
-* **Icons**: Lucide-React
-* **Routing**: React Router DOM v7 (Smooth navigation between dashboards)
+## 2. Backend Setup & Run (Server)
+
+The backend is built with **Node.js, Express, and MongoDB**. To run it:
+
+**Step 1: Navigate to the backend folder**
+```bash
+cd /path/to/SECURELABS/backend
+```
+
+**Step 2: Install Dependencies**
+```bash
+npm install
+```
+*(This command reads `package.json` and downloads necessary packages like express, mongoose, socket.io, jwt, bcryptjs, etc.)*
+
+**Step 3: Environment Variables Setup (.env file)**
+There must be a `.env` file inside the backend folder. Do not delete this file. It contains important details:
+
+
+```env
+PORT=5000
+MONGO_URI=mongodb+srv://<username>:<password>@cluster... (Your MongoDB URI)
+JWT_SECRET=your_super_secret_jwt_key
+```
+
+**Step 4: Start the Backend Server**
+```bash
+node server.js
+```
+*You should see this output in the terminal:*
+```text
+  SECURELABS Backend running on http://localhost:5000
+  MongoDB Connected
+```
+
+---
+
+## 3. Frontend Setup & Run 
+
+The frontend is built with **React (Vite) and Tailwind CSS**. This needs to be run in a separate terminal.
+
+**Step 1: Open a new terminal and navigate to the frontend folder**
+```bash
+cd /path/to/SECURELABS/frontend
+```
+
+**Step 2: Install Dependencies**
+```bash
+npm install
+```
+*(This installs vite, react, react-router-dom, react-icons, socket.io-client, etc.)*
+
+**Step 3: Start the Frontend Server**
+```bash
+npm run dev
+```
+
+*You should see this output in the terminal:*
+```text
+  VITE v5.0.0  ready in 200 ms
+  ➜  Local:   http://localhost:5173/
+```
+
+---
+
+## 4. How to Access the Website?
+
+When both the **Backend (Port 5000)** and **Frontend (Port 5173)** are running:
+
+1. Open your web browser (Chrome/Brave).
+2. Type in the URL bar: `http://localhost:5173`
+3. You will see the **SECURELABS Landing Page**.
+4. Click on "Get Started" to **Login / Signup** and access your Dashboard.
 
 ---
