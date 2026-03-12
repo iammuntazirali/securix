@@ -277,7 +277,7 @@ app.get('/api/health', (req, res) => {
 });
 
 //--- start server ---
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
     console.log(`\n  SecureLab Backend running on http://localhost:${PORT}`);
     console.log(` Nmap API:  POST http://localhost:${PORT}/api/scan`);
     console.log(` WebSocket: ws://localhost:${PORT} (live scan)`);
